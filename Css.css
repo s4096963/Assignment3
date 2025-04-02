@@ -109,8 +109,12 @@ h14 {
 p {
     color: black;
     text-align: center;
+    font-size: medium;
 }
 
+li::marker {
+    color: red;
+  }
 
 
 
@@ -122,3 +126,4 @@ p {
 /* semicolon ; */
 /* syntax - rules of writing ; */
 
+  
