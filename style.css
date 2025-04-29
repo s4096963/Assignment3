@@ -118,3 +118,54 @@ footer {
   color: #b0bec5;
   font-size: 0.9rem;
 }
+
+
+/* Interactive Component */
+.interactive-section {
+  margin-top: 2rem;
+  padding: 1rem;
+  background: #1f1f1f;
+  border-radius: 10px;
+  color: #a8dadc;
+  text-align: center;
+}
+
+.ambient-buttons button,
+.study-timer button,
+.quote-generator button,
+.bg-toggle button {
+  background-color: #2eaed2;
+  color: white;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  margin: 0.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.ambient-buttons button:hover,
+.study-timer button:hover,
+.quote-generator button:hover,
+.bg-toggle button:hover {
+  background-color: #38b8e0;
+}
+
+#timer-display {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 1rem 0;
+}
+
+#quote-box {
+  font-style: italic;
+  margin-bottom: 1rem;
+  color: #ffd166;
+}
+
+body.relax-mode {
+  background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
+  background-size: cover;
+  color: #ffffff;
+}
