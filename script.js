@@ -1,4 +1,4 @@
-// script.js
+/* script.js - Interactive components + Video */
 
 const video = document.getElementById("custom-video-player");
 const audio = document.getElementById("custom-audio-player");
