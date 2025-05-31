@@ -1,6 +1,4 @@
 /* script.js - Browser Based Interactions: Interactive Components */
-
-
 const board = document.getElementById('board');
 const status = document.getElementById('status');
 const resetBtn = document.getElementById('resetBtn');
@@ -82,10 +80,8 @@ resetBtn.addEventListener('click', () => {
   rotation = 0;
   board.style.transform = `rotate(0deg)`; // Reset rotation
 });
-
 // Create board on page load
 createBoard();
-
 /* Throughout the whole process of creating the game several youtube tutuorials were used to help figure out difficult componenets of javascript portion as well as to help identify any errors */
 
 
