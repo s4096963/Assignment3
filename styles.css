@@ -86,4 +86,82 @@ body {
   50% { background-position: 100% 50%; }
 }
 
+/* Fullscreen overlay to hide the game before start */
+.overlay {
+  position: fixed; /* Stays in place */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(17, 17, 17, 0.95); /* Dark semi-transparent background */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #00fbff; /* Neon blue text */
+  text-align: center;
+  z-index: 1000; /* On top of everything */
+  animation: fadeIn 1s ease; /* Smooth fade-in */
+}
+
+/* Title styles inside overlay */
+.overlay h1 {
+  font-size: 3rem;
+  margin: 0.5em 0;
+  text-shadow: 0 0 15px #0af; /* Neon glow */
+}
+
+/* Subtitle styles */
+.overlay h2 {
+  font-size: 2rem;
+  color: #0af;
+  text-shadow: 0 0 10px #0af;
+}
+
+/* Instructions paragraph */
+.overlay p {
+  font-size: 1.1rem;
+  max-width: 400px;
+  margin: 1em;
+  color: #ccc; /* Soft white text */
+}
+
+/* Start button styling */
+#startBtn {
+  padding: 12px 24px;
+  font-size: 1rem;
+  background: #0af; /* Neon blue */
+  color: #111;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  box-shadow: 0 0 10px #0af; /* Button glow */
+}
+
+/* Button hover effect */
+#startBtn:hover {
+  background: #07c; /* Darker blue on hover */
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Fade-out animation class to hide start screen */
+.fadeOut {
+  animation: fadeOut 1s ease forwards;
+}
+
+/* Defines fade-out keyframes */
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden; /* Fully hidden after fade */
+  }
+}
+
 /* Throughout the whole process of creating the game several youtube tutuorials were used to help figure out errors in my code */
+
