@@ -1,9 +1,6 @@
 /* script.js - Browser Based Interactions */
 
 
-/* script.js - Browser Based Interactions */
-
-
 const board = document.getElementById('board');
 const status = document.getElementById('status');
 const resetBtn = document.getElementById('resetBtn');
