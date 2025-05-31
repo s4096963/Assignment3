@@ -1,77 +1,91 @@
-/* script.js - Interactive components + Video */
-
-const video = document.getElementById("custom-video-player");
-const audio = document.getElementById("custom-audio-player");
-const playPauseImg = document.getElementById("play-pause-img");
-const progressBarFill = document.getElementById("progress-bar-fill");
-
-function togglePlayPause() {
-  if (video.paused || video.ended) {
-    video.play();
-    audio.play();
-    playPauseImg.src = "https://img.icons8.com/ios-glyphs/30/pause--v1.png";
-  } else {
-    video.pause();
-    audio.pause();
-    playPauseImg.src = "https://img.icons8.com/ios-glyphs/30/play--v1.png";
-  }
-}
-
-// Sync audio to video time
-video.addEventListener("timeupdate", () => {
-  if (Math.abs(video.currentTime - audio.currentTime) > 0.3) {
-    audio.currentTime = video.currentTime;
-  }
-
-  const percentage = (video.currentTime / video.duration) * 100;
-  progressBarFill.style.width = `${percentage}%`;
-});
-
-video.addEventListener("seeking", () => {
-  audio.currentTime = video.currentTime;
-});
-
-video.addEventListener("play", () => audio.play());
-video.addEventListener("pause", () => audio.pause());
-video.addEventListener("ended", () => audio.pause());
+/* script.js - Browser Based Interactions: Interactive Components */
 
 
-// Study Timer
-let timer;
-function startTimer(minutes = 25) {
-  let time = minutes * 60;
-  const display = document.getElementById("timer-display");
+const board = document.getElementById('board');
+const status = document.getElementById('status');
+const resetBtn = document.getElementById('resetBtn');
 
-  clearInterval(timer);
-  timer = setInterval(() => {
-    const mins = Math.floor(time / 60);
-    const secs = time % 60;
-    display.textContent = `${mins}:${secs < 10 ? "0" : ""}${secs}`;
-    time--;
+let cells = []; // Store cell DOM elements
+let currentPlayer = 'X'; // Track current player
+let gameActive = true; // Game activity flag
+let boardState = Array(9).fill(null); // Track X and O in each cell
+let rotation = 0; // Track board rotation angle
 
-    if (time < 0) {
-      clearInterval(timer);
-      display.textContent = "Break time!";
-    }
-  }, 1000);
-}
-
-// Motivation Quote
-const quotes = [
-  "Focus on progress, not perfection.",
-  "Small steps every day lead to big results.",
-  "You’re doing better than you think.",
-  "Discipline beats motivation.",
-  "Breathe. Focus. Repeat."
+// All possible winning combinations
+const winCombos = [
+  [0,1,2], [3,4,5], [6,7,8], // Rows
+  [0,3,6], [1,4,7], [2,5,8], // Columns
+  [0,4,8], [2,4,6]           // Diagonals
 ];
 
-function showRandomQuote() {
-  const quoteBox = document.getElementById("quote-box");
-  const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-  quoteBox.textContent = `"${randomQuote}"`;
+// Initialize and render the game board 
+function createBoard() {
+  board.innerHTML = '';
+  cells = [];
+  for (let i = 0; i < 9; i++) {
+    const cell = document.createElement('div');
+    cell.classList.add('cell');
+    cell.dataset.index = i; // Store cell index
+    cell.addEventListener('click', onCellClick); // Handle cell clicks
+    board.appendChild(cell);
+    cells.push(cell);
+  }
 }
 
-// Background toggle
-function toggleBackground() {
-  document.body.classList.toggle("relax-mode");
+// Handle cell click events 
+function onCellClick(e) {
+  if (!gameActive) return; // Ignore if game over
+  const idx = e.target.dataset.index;
+  if (boardState[idx]) return; // Ignore if cell already filled
+
+  boardState[idx] = currentPlayer;
+  cells[idx].textContent = currentPlayer;
+
+  // Check if current player wins
+  if (checkWin(currentPlayer)) {
+    status.textContent = `Player ${currentPlayer} wins! 🎉`;
+    gameActive = false;
+    return;
+  }
+
+  // Check for a tie
+  if (boardState.every(cell => cell !== null)) {
+    status.textContent = "It's a tie! 🤝";
+    gameActive = false;
+    return;
+  }
+
+  // Rotate board 90 degrees (A short yt tutorial helped figure this part)
+  rotation += 90;
+  board.style.transform = `rotate(${rotation}deg)`;
+
+
+  // Switch player (Help with a short yt tutorial)
+  currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+  status.textContent = `Player ${currentPlayer}'s turn`;
 }
+
+// Check if player has a winning combination
+function checkWin(player) {
+  return winCombos.some(combo => 
+    combo.every(idx => boardState[idx] === player)
+  );
+}
+
+// Reset the game (Yt tutorials helped with with the reset button)
+resetBtn.addEventListener('click', () => {
+  boardState.fill(null); // Clear board state
+  cells.forEach(cell => cell.textContent = ''); // Clear cell content
+  currentPlayer = 'X';
+  gameActive = true;
+  status.textContent = `Player ${currentPlayer}'s turn`;
+  rotation = 0;
+  board.style.transform = `rotate(0deg)`; // Reset rotation
+});
+
+// Create board on page load
+createBoard();
+
+/* Throughout the whole process of creating the game several youtube tutuorials were used to help figure out difficult componenets of javascript portion as well as to help identify any errors */
+
+
