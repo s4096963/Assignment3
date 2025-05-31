@@ -1,6 +1,9 @@
 /* script.js - Browser Based Interactions */
 
 
+/* script.js - Browser Based Interactions */
+
+
 const board = document.getElementById('board');
 const status = document.getElementById('status');
 const resetBtn = document.getElementById('resetBtn');
@@ -85,6 +88,15 @@ resetBtn.addEventListener('click', () => {
 
 // Create board on page load
 createBoard();
+
+// Get the start screen and button elements (Yt tutorial helped with the start screen)
+const startScreen = document.getElementById('startScreen');
+const startBtn = document.getElementById('startBtn');
+
+// When "Start Game" button is clicked
+startBtn.addEventListener('click', () => {
+  startScreen.classList.add('fadeOut'); // Start fade-out animation
+});
 
 /* Throughout the whole process of creating the game several youtube tutuorials were used to help figure out difficult componenets of javascript portion as well as to help identify any errors */
 
