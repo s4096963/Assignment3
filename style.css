@@ -1,186 +1,91 @@
 /* style.css - Dark Theme */
-/* Chosen style: Music for relaxation/study type website*/
+/* Chosen style: Neon & Dark theme for a futuristic style like Tron*/
+
 
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(to bottom, #1e1e1e, #2c2c2c);
-  color: #e0e0e0;
-  margin: 0;
-  padding: 0;
-}
-
-/* Center Title of webpage Heading */
-header {
-  text-align: center;
-  padding: 2rem;
-  background-color: #263238;
-  color: #2eaed2;
-  font-size: 2rem;
-}
-
-nav {
-  background-color: #37474f;
-  padding: 1rem;
-  text-align: center;
-}
-
-nav ul {
-  list-style: none;
-  padding: 0;
+  background: #111; /* Dark background */
+  color: #eee; /* Light text color */
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  height: 100vh; /* Full viewport height */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  user-select: none; /* Prevent text selection */
   margin: 0;
 }
-
-nav li {
-  display: inline;
-  margin: 0 15px;
-}
-
-nav a {
-  color: #b2ebf2;
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s ease;
-}
-
-nav a:hover {
-  color: #80deea;
-}
-
 .container {
-  max-width: 800px;
-  margin: 2rem auto;
-  padding: 1rem;
-  background: #2a2a2acc;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  text-align: center;
 }
-
-.media-player {
+h1 {
+  margin-bottom: 10px; /* Centre the Main Heading*/
+  font-weight: 700; /* Bold the main title */
+  color: #00fbff; /* Main Heading Text Color  */
+  text-shadow: 0 0 10px #0af;/* To give the heading a Glow Effect*/
+}
+#board {
+  width: 300px;/* Grid width */
+  height: 300px;/* Grid height */
+  margin: 20px auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  grid-template-rows: repeat(3, 1fr); /* 3 rows */
+  border: 4px solid #0af;/* Border grid color*/
+  border-radius: 15px; /* width of border of Grid */
+  background: #222;/* Background of the Grid is black*/
+  transition: transform 0.8s ease; /* Smooth board rotation */
+}
+.cell {
+  border: 1.5px solid #0af; /* Border color of the cells */
+  font-size: 3rem;
+  color: #0af;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-}
-
-video {
-  width: 100%;
-  border-radius: 12px;
-  margin-bottom: 1rem;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
-}
-
-.custom-controls {
-  display: flex;
-  align-items: center;
-  width: 100%;
-}
-
-#play-pause-btn {
-  background: #4caf50;
-  border: none;
-  border-radius: 50%;
-  padding: 10px;
-  margin-right: 20px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background-color 0.3s ease;
 }
-
-#play-pause-btn:hover {
-  background: #66bb6a;
+.cell:hover {
+  background-color: #0a2; /* Highlight cell on hover */
 }
-
-/* Video progress bar */
-.progress-bar {
-  flex-grow: 1;
-  height: 10px;
-  background: #455a64;
-  border-radius: 5px;
-  overflow: hidden;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+#status {
+  margin-top: 15px;
+  font-size: 1.2rem;
+  min-height: 1.4em; /* Reserve space for status text */
 }
-
-#progress-bar-fill {
-  display: block;
-  height: 100%;
-  width: 0%;
-  background: #81c784;
-  transition: width 0.2s ease;
-}
-
-section {
-  margin-top: 2rem;
-  font-size: 1.1rem;
-  color: #2f987e;
-}
-
-footer {
-  text-align: center;
-  padding: 1rem;
-  background-color: #263238;
-  color: #b0bec5;
-  font-size: 0.9rem;
-}
-
-
-/* Interactive Component */
-.interactive-section {
-  margin-top: 2rem;
-  padding: 1rem;
-  background: #1f1f1f;
+button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: #0af;/* Button color */
+  border: none; 
   border-radius: 10px;
-  color: #a8dadc;
-  text-align: center;
-}
-
-.ambient-buttons button,
-.study-timer button,
-.quote-generator button,
-.bg-toggle button {
-  background-color: #2eaed2;
-  color: white;
-  border: none;
-  padding: 0.7rem 1.2rem;
-  margin: 0.5rem;
-  border-radius: 8px;
-  font-size: 1rem;
+  color: #111;/* Text Color within button */
+  font-weight: bold;/* Bold The Reset Button Text */
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background-color 0.3s ease;
+}
+button:hover {
+  background: #07c; /* Button hover color */
+}
+#board {
+  box-shadow: 0 0 20px #0af;/* To give the board a more of glow */
+}
+.cell {
+  text-shadow: 0 0 10px #0af; /* To give the text a more of glow */
+} 
+
+/* After looking through various yt tutorials, I managed to understand how to do basic background color change */
+
+body {
+  background: linear-gradient(45deg, #111, #222, rgb(8, 0, 255)); /* Changing Background Color for more futuristic scan effect */
+  background-size: 400% 400%;
+  animation: gradientBG 10s ease infinite; /* A fade in transition with a darker color */
 }
 
-.ambient-buttons button:hover,
-.study-timer button:hover,
-.quote-generator button:hover,
-.bg-toggle button:hover {
-  background-color: #38b8e0;
+@keyframes gradientBG {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
-#timer-display {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin: 1rem 0;
-}
+/* Throughout the whole process of creating the game several youtube tutuorials were used to help figure out errors in my code */
 
-#quote-box {
-  font-style: italic;
-  margin-bottom: 1rem;
-  color: #ffd166;
-}
-
-body.relax-mode {
-  background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
-  background-size: cover;
-  color: #ffffff;
-}
-
-/* Adjusting the box to be smaller and more fitting around the interactive section */
-.interactive-section {
-  margin: 2rem auto; /* center the box */
-  padding: 1rem;
-  background: #1f1f1f;
-  border-radius: 10px;
-  color: #a8dadc;
-  text-align: center;
-  max-width: 500px; /* set a smaller width */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* optional visual enhancement */
-  border: 1px solid #333; /* optional border */
-}
 
