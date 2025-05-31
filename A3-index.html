@@ -1,4 +1,4 @@
-<!-- Chosen Action Click, for a tic tak toe game with a twist (Rotates with each turn) -->
+<!-- Browser-Based Interactive Project. Chosen Action Click, for a tic tak toe game with a twist (Rotates with each turn) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +8,13 @@
   <link rel="stylesheet" href="styles.css" /> <!-- Link to CSS file -->
 </head>
 <body>
+<!-- Start Screen Overlay -->
+<div id="startScreen" class="overlay">
+  <h2>Welcome to</h2> <!-- Welcome subtitle -->
+  <h1>Rotating Tic Tac Toe</h1> <!-- Main game title -->
+  <p>Take turns placing your mark. The board rotates after each move. First to align three wins!</p> <!-- Instructions -->
+  <button id="startBtn">Start Game</button> <!-- Button to start the game -->
+</div>
   <div class="container">
     <h1>Rotating Tic Tac Toe</h1> <!-- Game title -->
     <div id="board"></div> <!-- Game board container -->
