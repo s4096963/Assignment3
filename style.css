@@ -1,7 +1,5 @@
 /* style.css - Dark Theme */
 /* Chosen style: Neon & Dark theme for a futuristic style like Tron*/
-
-
 body {
   background: #111; /* Dark background */
   color: #eee; /* Light text color */
@@ -72,20 +70,16 @@ button:hover {
 .cell {
   text-shadow: 0 0 10px #0af; /* To give the text a more of glow */
 } 
-
 /* After looking through various yt tutorials, I managed to understand how to do basic background color change */
-
 body {
   background: linear-gradient(45deg, #111, #222, rgb(8, 0, 255)); /* Changing Background Color for more futuristic scan effect */
   background-size: 400% 400%;
   animation: gradientBG 10s ease infinite; /* A fade in transition with a darker color */
 }
-
 @keyframes gradientBG {
   0%, 100% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
 }
-
 /* Throughout the whole process of creating the game several youtube tutuorials were used to help figure out errors in my code */
 
 
